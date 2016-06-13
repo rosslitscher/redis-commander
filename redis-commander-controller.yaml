@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: redis-commander
+  labels:
+    heritage: harpoon
+    name: redis-commander
+    vender: qingyuanos.io
+spec:
+  replicas: 1
+  selector:
+    name: redis-commander
+  template:
+    metadata:
+      labels:
+        name: redis-commander
+    spec:
+      containers:
+      - image: tangfeixiong/redis-commander:joeferner
+        imagePullPolicy: IfNotPresent
+        name: redis-commander
+        ports:
+        - containerPort: 8081
